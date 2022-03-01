@@ -21,11 +21,11 @@ def choose_markup(videoid, duration, user_id):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -59,11 +59,11 @@ def livestream_markup(quality, videoid, duration, user_id):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
