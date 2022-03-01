@@ -28,11 +28,11 @@ def url_markup(videoid, duration, user_id, query, query_type):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -48,7 +48,7 @@ def url_markup(videoid, duration, user_id, query, query_type):
         [
             InlineKeyboardButton(
                 text="Add me",
-                url=f"t.me/{BOT_USERNAME}?startgroup=true",
+                url=f"t.me{BOT_USERNAME}?startgroup=true",
             ),
         ], 
     ]
@@ -207,11 +207,11 @@ def secondary_markup(videoid, user_id):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -241,11 +241,11 @@ def secondary_markup2(videoid, user_id):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -275,11 +275,11 @@ def primary_markup(videoid, user_id, current_time, total_time):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -309,11 +309,11 @@ def timer_markup(videoid, user_id, current_time, total_time):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [
@@ -346,11 +346,11 @@ def audio_markup(videoid, user_id, current_time, total_time):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close")],
@@ -375,11 +375,11 @@ def audio_timer_markup_start(videoid, user_id, current_time, total_time):
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close")],
@@ -404,11 +404,11 @@ audio_markup2 = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Updates",
-                url=f"t.me/{SUPPORT_CHANNEL}",
+                url=f"{SUPPORT_CHANNEL}",
             ),
             InlineKeyboardButton(
                 text="Support",
-                url=f"t.me/{SUPPORT_GROUP}",
+                url=f"{SUPPORT_GROUP}",
             ),
         ],
         [InlineKeyboardButton("🗑 Close Menu", callback_data="close")],
