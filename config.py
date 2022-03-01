@@ -26,7 +26,7 @@ UPSTREAM_BRANCH = "main"
 SUPPORT_CHANNEL = "https://t.me/ABOUTVEDMAT"
 SUPPORT_GROUP = "https://t.me/LOVELYAPPEAL"
 
-THUMBNAIL = getenv("THUMB_LINK") 
+THUMBNAIL = "https://telegra.ph/file/41dd51814d6dc353cde87.jpg" 
 
 botusername = str(getenv("BOT_USERNAME"))
 
