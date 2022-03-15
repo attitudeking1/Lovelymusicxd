@@ -83,7 +83,7 @@ async def initiate_bot():
             status="[bold blue]Importation Completed!",
         )
     console.print(
-        "[bold green]Congrats!! SiestaXMusic Bot has started successfully!\n"
+        "[bold green]Congrats!! Lovely Bot has started successfully!\n"
     )
     try:
         await app.send_message(
@@ -114,8 +114,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_1.join_chat("BotDuniya")
-            await ASS_CLI_1.join_chat("PmPermit")
+            await ASS_CLI_1.join_chat("ABOUTVEDMAT")
+            await ASS_CLI_1.join_chat("LOVELYAPPEAL")
         except:
             pass
         console.print(f"├[red] Assistant 1 Started as {ASSNAME1}!")
@@ -133,8 +133,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_2.join_chat("BotDuniya")
-            await ASS_CLI_2.join_chat("PmPermit")
+            await ASS_CLI_2.join_chat("ABOUTVEDMAT")
+            await ASS_CLI_2.join_chat("LOVELYAPPEAL")
         except:
             pass
         console.print(f"├[red] Assistant 2 Started as {ASSNAME2}!")
@@ -152,8 +152,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_3.join_chat("BotDuniya")
-            await ASS_CLI_3.join_chat("PmPermit")
+            await ASS_CLI_3.join_chat("ABOUTVEDMAT")
+            await ASS_CLI_3.join_chat("LOVELYAPPEAL")
         except:
             pass
         console.print(f"├[red] Assistant 3 Started as {ASSNAME3}!")
@@ -171,8 +171,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_4.join_chat("BotDuniya")
-            await ASS_CLI_4.join_chat("PmPermit")
+            await ASS_CLI_4.join_chat("ABOUTVEDMAT")
+            await ASS_CLI_4.join_chat("LOVELYAPPEAL")
         except:
             pass
         console.print(f"├[red] Assistant 4 Started as {ASSNAME4}!")
@@ -190,8 +190,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_5.join_chat("BotDuniya")
-            await ASS_CLI_5.join_chat("PmPermit")
+            await ASS_CLI_5.join_chat("ABOUTVEDMAT")
+            await ASS_CLI_5.join_chat("LOVELYAPPEAL")
         except:
             pass
         console.print(f"├[red] Assistant 5 Started as {ASSNAME5}!")
