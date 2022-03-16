@@ -4,7 +4,7 @@ from pyrogram import filters
 from Yukki.Plugins.custom.strings import *
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-async def start_menu_private(message):
+async def vcstart_menu_private(message):
     mention = "[" + message.from_user.first_name + "](tg://user?id=" + str(message.from_user.id) + ")"
     text = START_TEXT.replace("MENTION",mention)
     await message.reply_photo(photo=THUMBNAIL,caption=text,reply_markup=START_BUTTON_PRIVATE,parse_mode="markdown")
