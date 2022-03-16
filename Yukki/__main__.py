@@ -1,4 +1,4 @@
-from Yukki.Plugins.custom.start import vcstart_menu_private
+from Yukki.Plugins.custom.start import vcstart_menu_private as start_menu_private
 import asyncio
 import importlib
 import os
