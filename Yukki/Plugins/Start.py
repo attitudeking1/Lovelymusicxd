@@ -1,4 +1,4 @@
-from Yukki.Plugins.custom.start import start_menu_group
+from Yukki.Plugins.custom.start import vcstart_menu_group
 import asyncio
 import random
 import time
@@ -32,11 +32,11 @@ __MODULE__ = "Essentials"
 __HELP__ = """
 
 
-/start 
+/vcstart 
 - Start the Bot.
 
 
-/help 
+/Vchelp 
 - Get Commands Helper Menu.
 
 
@@ -95,15 +95,15 @@ async def welcome(_, message: Message):
             return
 
 
-@app.on_message(filters.command(["start", f"start@{BOT_USERNAME}", "help", f"help@{BOT_USERNAME}"]) & filters.group)
+@app.on_message(filters.command(["vcstart", f"vcstart@{BOT_USERNAME}", "help", f"help@{BOT_USERNAME}"]) & filters.group)
 @PermissionCheck
 async def useradd(_, message: Message):
-    await start_menu_group(message)
+    await vcstart_menu_group(message)
 
 
-@app.on_message(filters.command(["settings", f"settings@{BOT_USERNAME}"]) & filters.group)
+@app.on_message(filters.command(["vcsettings", f"vcsettings@{BOT_USERNAME}"]) & filters.group)
 @PermissionCheck
-async def settings(_, message: Message):
+async def vcsettings(_, message: Message):
     c_id = message.chat.id
     _check = await get_start(c_id, "assistant")
     if not _check:
@@ -500,7 +500,7 @@ async def start_markup_check(_, CallbackQuery):
         if command == "DIT":
             diske = psutil.disk_usage("/").percent
             await CallbackQuery.answer(
-                f"SiestaXMusic Disk Usage: {diske}%", show_alert=True
+                f"Lovely Disk Usage: {diske}%", show_alert=True
             )
     except Exception:
         pass
