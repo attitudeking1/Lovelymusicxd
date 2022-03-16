@@ -28,10 +28,10 @@ START_BUTTON_GROUP = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="📣 Updates Channel", url="https://t.me/BotDuniya"
+                text="📣 Updates Channel", url="https://t.me/ABOUTVEDMAT"
             ),
             InlineKeyboardButton(
-                text="💬 Support Group", url="https://t.me/PmPermit"
+                text="💬 Support Group", url="https://t.me/LOVELYAPPEAL"
             ),                       
         ],        
     ]
@@ -50,10 +50,10 @@ START_BUTTON_PRIVATE = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="📣 Updates Channel", url="https://t.me/BotDuniya"
+                text="📣 Updates Channel", url="https://t.me/ABOUTVEDMAT"
             ),
             InlineKeyboardButton(
-                text="💬 Support Group", url="https://t.me/PmPermit"
+                text="💬 Support Group", url="https://t.me/LOVELYAPPEAL"
             ),                       
         ],        
     ]
@@ -189,13 +189,13 @@ BOT_TEXT = """
 Here is the help for **Bot Commands:**
 
 
-/start 
+/vcstart 
 - Start the Music Bot.
 
-/help 
+/vchelp 
 - Get Commands Helper Menu with detailed explanations of commands.
 
-/settings 
+/vcsettings 
 - Get Settings dashboard of a group. You can manage Auth Users Mode. Commands Mode from here.
 
 /ping
