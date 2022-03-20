@@ -1,4 +1,4 @@
-from Yukki.Plugins.custom.start import vcstart_menu_private as start_menu_private
+from Yukki.Plugins.custom.start import vcstart_menu_private
 import asyncio
 import importlib
 import os
@@ -237,7 +237,7 @@ All commands can be used with: / """
 
 @app.on_message(filters.command(["vchelp", f"vchelp@{BOT_USERNAME}"]) & filters.private)
 async def vchelp_command(_, message):
-    await start_menu_private(message)
+    await vcstart_menu_private(message)
 
 
 @app.on_message(filters.command(["vcstart", f"vcstart@{BOT_USERNAME}"]) & filters.private)
