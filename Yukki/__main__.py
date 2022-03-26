@@ -1,31 +1,21 @@
-from Yukki.Plugins.custom.start import vcstart_menu_private
 import asyncio
 import importlib
-import os
-import re
-
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls import idle
 from rich.console import Console
-from rich.table import Table
 from youtubesearchpython import VideosSearch
-
 from config import (LOG_GROUP_ID, LOG_SESSION, STRING1, STRING2, STRING3,
-                    STRING4, STRING5, THUMBNAIL)
+                    STRING4, STRING5)
 from Yukki import (ASS_CLI_1, ASS_CLI_2, ASS_CLI_3, ASS_CLI_4, ASS_CLI_5,
                    ASSID1, ASSID2, ASSID3, ASSID4, ASSID5, ASSNAME1, ASSNAME2,
-                   ASSNAME3, ASSNAME4, ASSNAME5, BOT_ID, BOT_NAME, BOT_USERNAME, LOG_CLIENT,
-                   OWNER_ID, app)
+                   ASSNAME3, ASSNAME4, ASSNAME5, BOT_ID, BOT_NAME, LOG_CLIENT,app)
 from Yukki.Core.Clients.cli import LOG_CLIENT
 from Yukki.Core.PyTgCalls.Yukki import (pytgcalls1, pytgcalls2, pytgcalls3,
                                         pytgcalls4, pytgcalls5)
-from Yukki.Database import (get_active_chats, get_active_video_chats,
-                            get_sudoers, is_on_off, remove_active_chat,
+from Yukki.Database import (get_active_chats, get_active_video_chats,remove_active_chat,
                             remove_active_video_chat)
-from Yukki.Inline import private_panel
 from Yukki.Plugins import ALL_MODULES
-from Yukki.Utilities.inline import paginate_modules
 
 loop = asyncio.get_event_loop()
 console = Console()
@@ -83,7 +73,7 @@ async def initiate_bot():
             status="[bold blue]Importation Completed!",
         )
     console.print(
-        "[bold green]Congrats!! Lovely Bot has started successfully!\n"
+        "[bold green]Congrats!! Yukki Music Bot has started successfully!\n"
     )
     try:
         await app.send_message(
@@ -91,7 +81,9 @@ async def initiate_bot():
             "<b>Congrats!! Music Bot has started successfully!</b>",
         )
     except Exception as e:
-        print(str(e))
+        print(
+            "\nBot has failed to access the log Channel. Make sure that you have added your bot to your log channel and promoted as admin!"
+        )
         console.print(f"\n[red]Stopping Bot")
         return
     a = await app.get_chat_member(LOG_GROUP_ID, BOT_ID)
@@ -114,8 +106,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_1.join_chat("ABOUTVEDMAT")
             await ASS_CLI_1.join_chat("LOVELYAPPEAL")
+            await ASS_CLI_1.join_chat("ABOUTVEDMAT")
         except:
             pass
         console.print(f"├[red] Assistant 1 Started as {ASSNAME1}!")
@@ -133,8 +125,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_2.join_chat("ABOUTVEDMAT")
             await ASS_CLI_2.join_chat("LOVELYAPPEAL")
+            await ASS_CLI_2.join_chat("ABOUTVEDMAT")
         except:
             pass
         console.print(f"├[red] Assistant 2 Started as {ASSNAME2}!")
@@ -152,8 +144,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_3.join_chat("ABOUTVEDMAT")
             await ASS_CLI_3.join_chat("LOVELYAPPEAL")
+            await ASS_CLI_3.join_chat("ABOUTVEDMAT")
         except:
             pass
         console.print(f"├[red] Assistant 3 Started as {ASSNAME3}!")
@@ -171,8 +163,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_4.join_chat("ABOUTVEDMAT")
             await ASS_CLI_4.join_chat("LOVELYAPPEAL")
+            await ASS_CLI_4.join_chat("ABOUTVEDMAT")
         except:
             pass
         console.print(f"├[red] Assistant 4 Started as {ASSNAME4}!")
@@ -190,8 +182,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await ASS_CLI_5.join_chat("ABOUTVEDMAT")
             await ASS_CLI_5.join_chat("LOVELYAPPEAL")
+            await ASS_CLI_5.join_chat("ABOUTVEDMAT")
         except:
             pass
         console.print(f"├[red] Assistant 5 Started as {ASSNAME5}!")
@@ -209,8 +201,8 @@ async def initiate_bot():
             console.print(f"\n[red]Stopping Bot")
             return
         try:
-            await LOG_CLIENT.join_chat("BotDuniya")
-            await LOG_CLIENT.join_chat("PmPermit")
+            await LOG_CLIENT.join_chat("LOVELYAPPEAL")
+            await LOG_CLIENT.join_chat("ABOUTVEDMAT")
         except:
             pass
     console.print(f"└[red] Yukki Music Bot Boot Completed.")
@@ -228,69 +220,13 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Hello firstname,
-My name is {BOT_NAME}.
-A Telegram Music+Video Streaming bot with some useful features.
 
-All commands can be used with: / """
-
-
-@app.on_message(filters.command(["vchelp", f"vchelp@{BOT_USERNAME}"]) & filters.private)
-async def vchelp_command(_, message):
-    await vcstart_menu_private(message)
-
-
-@app.on_message(filters.command(["vcstart", f"vcstart@{BOT_USERNAME}"]) & filters.private)
-async def vcstart_command(_, message):
+@app.on_message(filters.command("vcstart") & filters.private)
+async def start_command(_, message):
     if len(message.text.split()) > 1:
-        name = (message.text.split(None, 1)[1]).lower()
-        if name[0] == "s":
-            sudoers = await get_sudoers()
-            text = "⭐️<u> **Owners:**</u>\n"
-            sex = 0
-            for x in OWNER_ID:
-                try:
-                    user = await app.get_users(x)
-                    user = (
-                        user.first_name if not user.mention else user.mention
-                    )
-                    sex += 1
-                except Exception:
-                    continue
-                text += f"{sex}➤ {user}\n"
-            smex = 0
-            for count, user_id in enumerate(sudoers, 1):
-                if user_id not in OWNER_ID:
-                    try:
-                        user = await app.get_users(user_id)
-                        user = (
-                            user.first_name
-                            if not user.mention
-                            else user.mention
-                        )
-                        if smex == 0:
-                            smex += 1
-                            text += "\n⭐️<u> **Sudo Users:**</u>\n"
-                        sex += 1
-                        text += f"{sex}➤ {user}\n"
-                    except Exception:
-                        continue
-            if not text:
-                await message.reply_text("No Sudo Users")
-            else:
-                await message.reply_text(text)
-            if await is_on_off(5):
-                sender_id = message.from_user.id
-                sender_name = message.from_user.first_name
-                umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
-                return await LOG_CLIENT.send_message(
-                    LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>SUDOLIST</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
-                )
-        if name == "help":
-            return await start_menu_private(message)
+        name = (message.text.split(None, 1)[1]).lower()    
         if name[0] == "i":
-            m = await message.reply_text("🔎 Fetching Info!")
+            m = await message.reply_text("🔎 `Fetching Information!`")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -304,162 +240,35 @@ async def vcstart_command(_, message):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-🔍__**Video Track Information**__
 
-❇️**Title:** {title}
-
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
-
-⚡️ __Searched Powered By {BOT_NAME}__"""
+࿂ **Title:** `{title}`
+࿂ **Duration:** `{duration}` Mins
+࿂ **Views:** `{views}`
+࿂ **Published Time:** `{published}`
+࿂ **Channel Name:** {channel}
+࿂ **Channel Link:** [Visit From Here]({channellink})
+࿂ **Video Link:** [Link]({link})
+"""
             key = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch Youtube Video", url=f"{link}"
+                            text="Youtube", url=f"{link}"
                         ),
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="Close ✖️", callback_data="close"
                         ),
                     ],
                 ]
             )
             await m.delete()
-            await app.send_photo(
+            return await app.send_photo(
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
                 parse_mode="markdown",
                 reply_markup=key,
             )
-            if await is_on_off(5):
-                sender_id = message.from_user.id
-                sender_name = message.from_user.first_name
-                umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
-                return await LOG_CLIENT.send_message(
-                    LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>VIDEO INFORMATION</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
-                )
-            return
-    else:
-        return await start_menu_private(message)
-
-
-async def lovely_parser(name, keyboard=None):
-    if not keyboard:
-        keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "lovely"))
-    return (
-        """Hello {first_name},
-
-Click on the buttons for more information.
-
-All commands can be used with: /
-""".format(
-            first_name=name
-        ),
-        keyboard,
-    )
-
-
-@app.on_callback_query(filters.regex("shikhar"))
-async def shikhar(_, CallbackQuery):
-    text, keyboard = await lovely_parser(CallbackQuery.from_user.mention)
-    await CallbackQuery.message.edit(text, reply_markup=keyboard)
-
-
-@app.on_callback_query(filters.regex(r"lovely_(.*?)"))
-async def lovely_button(client, query):
-    home_match = re.match(r"lovely_home\((.+?)\)", query.data)
-    mod_match = re.match(r"lovely_module\((.+?)\)", query.data)
-    prev_match = re.match(r"lovely_prev\((.+?)\)", query.data)
-    next_match = re.match(r"lovely_next\((.+?)\)", query.data)
-    back_match = re.match(r"lovely_back", query.data)
-    create_match = re.match(r"lovely_create", query.data)
-    top_text = f"""Hello {query.from_user.first_name},
-
-Click on the buttons for more information.
-
-All commands can be used with: /
- """
-    if mod_match:
-        module = mod_match.group(1)
-        text = (
-            "{} **{}**:\n".format(
-                "Here is the help for", HELPABLE[module].__MODULE__
-            )
-            + HELPABLE[module].__HELP__
-        )
-        key = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="↪️ Back", callback_data="lovely_back"
-                    ),
-                    InlineKeyboardButton(
-                        text="🏘️ Home", callback_data="lovelyx_back"
-                    ),
-                ],
-            ]
-        )
-
-        await query.message.edit(
-            text=text,
-            reply_markup=key,
-            disable_web_page_preview=True,
-        )
-    elif home_match:
-        out = private_panel()
-        text1 = home_text_pm.replace("firstname",query.from_user.mention)
-        await app.send_photo(
-            query.from_user.id,
-            photo=THUMBNAIL,
-            caption=text1,
-            reply_markup=InlineKeyboardMarkup(out[1]),
-        )
-        await query.message.delete()
-    elif prev_match:
-        curr_page = int(prev_match.group(1))
-        await query.message.edit(
-            text=top_text,
-            reply_markup=InlineKeyboardMarkup(
-                paginate_modules(curr_page - 1, HELPABLE, "lovely")
-            ),
-            disable_web_page_preview=True,
-        )
-
-    elif next_match:
-        next_page = int(next_match.group(1))
-        await query.message.edit(
-            text=top_text,
-            reply_markup=InlineKeyboardMarkup(
-                paginate_modules(next_page + 1, HELPABLE, "lovely")
-            ),
-            disable_web_page_preview=True,
-        )
-
-    elif back_match:
-        await query.message.edit(
-            text=top_text,
-            reply_markup=InlineKeyboardMarkup(
-                paginate_modules(0, HELPABLE, "lovely")
-            ),
-            disable_web_page_preview=True,
-        )
-
-    elif create_match:
-        text, keyboard = await help_parser(query)
-        await query.message.edit(
-            text=text,
-            reply_markup=keyboard,
-            disable_web_page_preview=True,
-        )
-
-    return await client.answer_callback_query(query.id)
-
 
 if __name__ == "__main__":
     loop.run_until_complete(initiate_bot())
