@@ -37,16 +37,6 @@ def url_markup(videoid, duration, user_id, query, query_type):
         ],
         [
             InlineKeyboardButton(
-                text="🔎 More Results",
-                callback_data=f"Search {query}|{user_id}",
-            ),
-            InlineKeyboardButton(
-                text="🗑 Close Search",
-                callback_data=f"forceclose {query}|{user_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
                 text="Add me",
                 url=f"t.me{BOT_USERNAME}?startgroup=true",
             ),
@@ -76,12 +66,6 @@ def url_markup2(videoid, duration, user_id):
                 text="Support",
                 url=f"t.me/{SUPPORT_GROUP}",
             ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="🗑 Close Search",
-                callback_data=f"forceclose {videoid}|{user_id}",
-            )
         ],
         [
             InlineKeyboardButton(
@@ -216,12 +200,6 @@ def secondary_markup(videoid, user_id):
         ],
         [
             InlineKeyboardButton(
-                text="🔗 More Menu", callback_data=f"other {videoid}|{user_id}"
-            ),
-            InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close"),
-        ],
-        [
-            InlineKeyboardButton(
                 text="Add me",
                 url=f"t.me/{BOT_USERNAME}?startgroup=true",
             ),
@@ -247,9 +225,6 @@ def secondary_markup2(videoid, user_id):
                 text="Support",
                 url=f"{SUPPORT_GROUP}",
             ),
-        ],
-        [
-            InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close"),
         ],
         [
             InlineKeyboardButton(
@@ -284,12 +259,6 @@ def primary_markup(videoid, user_id, current_time, total_time):
         ],
         [
             InlineKeyboardButton(
-                text="🔗 More Menu", callback_data=f"other {videoid}|{user_id}"
-            ),
-            InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close"),
-        ],
-        [
-            InlineKeyboardButton(
                 text="Add me",
                 url=f"t.me/{BOT_USERNAME}?startgroup=true",
             ),
@@ -315,12 +284,6 @@ def timer_markup(videoid, user_id, current_time, total_time):
                 text="Support",
                 url=f"{SUPPORT_GROUP}",
             ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="🔗 More Menu", callback_data=f"other {videoid}|{user_id}"
-            ),
-            InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close"),
         ],
         [
             InlineKeyboardButton(
@@ -353,7 +316,6 @@ def audio_markup(videoid, user_id, current_time, total_time):
                 url=f"{SUPPORT_GROUP}",
             ),
         ],
-        [InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close")],
         [
             InlineKeyboardButton(
                 text="Add me",
@@ -382,7 +344,6 @@ def audio_timer_markup_start(videoid, user_id, current_time, total_time):
                 url=f"{SUPPORT_GROUP}",
             ),
         ],
-        [InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close")],
         [
             InlineKeyboardButton(
                 text="Add me",
@@ -411,7 +372,6 @@ audio_markup2 = InlineKeyboardMarkup(
                 url=f"{SUPPORT_GROUP}",
             ),
         ],
-        [InlineKeyboardButton("🗑 Close Menu", callback_data="close")],
         [
             InlineKeyboardButton(
                 text="Add me",
